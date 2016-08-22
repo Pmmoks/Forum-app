@@ -38,6 +38,7 @@ export default class CommentForm extends React.Component {
 
       this._author.value = ''
       this._body.value = ''
+      this.setState({characters: 0})
     }
   }
 

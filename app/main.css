@@ -80,7 +80,7 @@ button:hover {
 }
 
 .comment-header {
-  border-bottom: 2px solid #66ab86;
+  border-bottom: 1px solid #66ab86;
   font-size: 110%;
   font-weight: bolder;
   color: #6ec4db;
@@ -90,13 +90,56 @@ button:hover {
   margin: 5px auto 5px auto;
 }
 
-.comment-actions-delete, .comment-actions-abuse {
+.comment-edit-box {
+  width: 99%;
+  -moz-border-radius: 5px;
+  -webkit-border-radius:5px;
+  -o-border-radius:5px;
+  -ms-border-radius:5px;
+  border-radius:5px;
+}
+
+.comment-edit-box:focus {
+  border: 1px solid #77B3D8;
+}
+
+.Voting-Buttons {
+  font-size: 40%;
+  color: grey;
+  display: inline-block;
+  margin-right: 25px;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
+}
+
+.vote-break {
+  color: #888888;
+  margin: 0px 7px 0px 5px;
+}
+
+.up-vote, .down-vote {
+  font-size: 400%;
+  display: inline-block;
+}
+
+.up-vote:hover {
+  color: green;
+}
+
+.down-vote:hover {
+  color: darkred;
+}
+
+.comment-actions-delete, .comment-actions-abuse, .comment-actions-edit {
+  display: inline-block;
   margin: 0px 10px 0px 0px;
   font-size: 80%;
-  color: #555555;
+  color: #888888;
   text-decoration: none;
 }
 
-.comment-actions-delete:hover, .comment-actions-abuse:hover {
-  color: #aaaaaa;
+.comment-actions-delete:hover, .comment-actions-abuse:hover, .comment-actions-edit:hover {
+  color: #333333;
 }

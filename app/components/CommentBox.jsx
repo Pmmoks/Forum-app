@@ -39,7 +39,7 @@ export default class CommentBox extends React.Component {
   }
 
   _toggleShowComments(event) {
-    event.preventDefault();
+    event.preventDefault()
       this.setState({showComments: !this.state.showComments})
   }
 
@@ -74,20 +74,52 @@ export default class CommentBox extends React.Component {
 
     return this.state.comments.map((comment) => {
       return (<Comment
-               author={comment.author}
-               body={comment.body}
-               avatarUrl={comment.avatarUrl}
-               key={comment.id} />);
-    });
+                 author={comment.author}
+                 avatarUrl={comment.avatarUrl}
+                 value ={comment.body}
+                 editing={comment.editing}
+                 onEditClick={this._activateEdit.bind(this, null, comment.id)}
+                 key={comment.id}
+                 onDelete = {this._deleteComment.bind(this, null, comment.id)}
+                 onEdit={this._editComment.bind(this, null, comment.id)}/>)
+    })
   }
 
   _getCommentsTitle(commentCount) {
     if (commentCount === 0) {
       return 'No comments yet';
     } else if (commentCount === 1) {
-      return '1 comment';
+      return '1 comment'
     } else {
       return `${commentCount} comments`;
     }
+  }
+
+  _deleteComment(event, key) {
+    //event.preventDefault()
+    //event.stopPropagation()
+    this.setState (
+      {comments: this.state.comments.filter((singleComment) => singleComment.id !== key)
+      }
+    )
+  }
+
+  _activateEdit(event, key) {
+    this.setState({comments: this.state.comments.map((comment) => {
+      if (comment.id === key) {
+          comment.editing = true
+        }
+      return comment
+    })})
+  }
+
+  _editComment(event, key, value) {
+    this.setState({comments: this.state.comments.map((comment) => {
+      if (comment.id === key) {
+        comment.editing = false
+        comment.body = value
+      }
+      return comment
+    })})
   }
 }
